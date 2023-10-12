@@ -1,0 +1,127 @@
+<div class="container">
+  <h3>Register works!</h3>
+
+  <div class="container">
+    <form [formGroup]="registerForm" (ngSubmit)="handleRegister()">
+      <div class="mb-3">
+        <!--TODO!! Name -->
+        <label for="nameInput" class="form-label">Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="nameInput"
+          aria-describedby="nameHelp"
+          formControlName="registerName"
+        />
+        <div
+          id="emailHelp"
+          class="form-text text-danger"
+          *ngIf="
+            registerForm.controls['registerName'].touched &&
+            registerForm.controls['registerName'].invalid
+          "
+        >
+          <span
+            *ngIf="registerForm.controls['registerName'].errors?.['required']"
+            >This field is required</span
+          >
+        </div>
+      </div>
+
+      <!--TODO!! Email -->
+      <div class="mb-3">
+        <label for="emailInput" class="form-label">email</label>
+        <input
+          type="email"
+          class="form-control"
+          id="emailInput"
+          aria-describedby="nameHelp"
+          formControlName="registerEmail"
+        />
+        <div
+          id="emailHelp"
+          class="form-text text-danger"
+          *ngIf="
+            registerForm.controls['registerEmail'].touched &&
+            registerForm.controls['registerEmail'].invalid
+          "
+        >
+          <span
+            *ngIf="registerForm.controls['registerEmail'].errors?.['required']"
+            >This field is required</span
+          >
+          <span *ngIf="registerForm.controls['registerEmail'].errors?.['email']"
+            >enter valid email</span
+          >
+        </div>
+      </div>
+
+      <!--TODO!!User Name -->
+      <div class="mb-3">
+        <label for="userNameInput" class="form-label">user name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="userNameInput"
+          aria-describedby="nameHelp"
+          formControlName="registerUserName"
+        />
+        <div
+          id="emailHelp"
+          class="form-text text-danger"
+          *ngIf="
+            registerForm.controls['registerUserName'].touched &&
+            registerForm.controls['registerUserName'].invalid
+          "
+        >
+          <span
+            *ngIf="registerForm.controls['registerUserName'].errors?.['required']"
+            >This field is required</span
+          >
+          <span
+            *ngIf="registerForm.controls['registerUserName'].errors?.['pattern']"
+            >no white spaces</span
+          >
+        </div>
+      </div>
+
+      <!--TODO!! Password -->
+      <div class="mb-3">
+        <label for="passwordInput" class="form-label">password</label>
+        <input
+          type="text"
+          class="form-control"
+          id="passwordInput"
+          aria-describedby="nameHelp"
+          formControlName="registerPassword"
+        />
+        <div
+          id="emailHelp"
+          class="form-text text-danger"
+          *ngIf="
+            registerForm.controls['registerPassword'].touched &&
+            registerForm.controls['registerPassword'].invalid
+          "
+        >
+          <span
+            *ngIf="registerForm.controls['registerPassword'].errors?.['required']"
+            >This field is required</span
+          >
+          <span
+            *ngIf="registerForm.controls['registerPassword'].errors?.['pattern']"
+            >password must contain 8 characters, oneLowerCase, oneUpperCase, one
+            digit and special character</span
+          >
+        </div>
+      </div>
+
+      <button
+        type="submit"
+        class="btn btn-primary"
+        [disabled]="registerForm.invalid"
+      >
+        Submit
+      </button>
+    </form>
+  </div>
+</div>

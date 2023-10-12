@@ -1,0 +1,61 @@
+<div class="container">
+  <h3>login works!</h3>
+
+  <div class="container">
+    <form #loginForm="ngForm" (ngSubmit)="handleLogin(loginForm)">
+      <div class="mb-3">
+        <!--TODO!! Email -->
+        <label for="emailInput" class="form-label">Email</label>
+        <input
+          type="email"
+          class="form-control"
+          id="emailInput"
+          name="email"
+          ngModel
+          required
+          email
+          #email="ngModel"
+        />
+
+        <div
+          id="emailHelp"
+          class="form-text text-danger"
+          *ngIf="email.touched && email.invalid"
+        >
+          <span *ngIf="email.errors?.['required']">Email is required</span>
+          <span *ngIf="email.errors?.['email']">Enter valid email</span>
+        </div>
+      </div>
+      <!--TODO!! Password -->
+      <div class="mb-3">
+        <label for="passwordInput" class="form-label">Password</label>
+        <input
+          type="password"
+          class="form-control"
+          id="passwordInput"
+          name="password"
+          ngModel
+          required
+          #password="ngModel"
+        />
+
+        <div
+          id="passwordHelp"
+          class="form-text text-danger"
+          *ngIf="password.touched && password.invalid"
+        >
+          <span *ngIf="password.errors?.['required']"
+            >Password is required</span
+          >
+        </div>
+      </div>
+      <button
+        type="submit"
+        class="btn btn-primary"
+        [disabled]="loginForm.invalid"
+      >
+        Register
+      </button>
+    </form>
+  </div>
+</div>
